@@ -1,0 +1,36 @@
+storage: ./storage
+auth:
+  htpasswd:
+    file: .htpasswd
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+packages:
+  "@fake/*":
+    access: $authenticated
+    publish: $authenticated
+  "**":
+    proxy: npmjs
+logs:
+  - { type: stdout, fromat: pretty, level: http }
+web:
+  enable: true
+listen:
+  - 0.0.0.0:4874
+security:
+  api:
+    legacy: false
+    jwt:
+      sign:
+        expiresIn: 60d
+        notBefore: 1
+      verify:
+        algorithm:
+        expiresIn:
+        notBefore:
+        ignoreExpiration:
+        maxAge:
+        clockTimestamp:
+  web:
+    sign:
+      expiresIn: 7d

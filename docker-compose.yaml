@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  verdaccio:
+    build: .
+    container_name: "verdaccio2096"
+    ports:
+      - "4874:4874"
+    volumes:
+      - "./config.yaml:/home/node/app/config.yaml"
+      - "./.htpasswd:/home/node/app/.htpasswd"
+      - "./storage:/home/node/app/storage"
+    init: true
